@@ -1,0 +1,24 @@
+header.banner {
+    background-size: cover;
+    height: 450px;
+    position: relative;
+    border-radius: 0 0 120px;
+    overflow: hidden;
+}
+
+header.banner .overlay {
+    content: "";
+    position: absolute;
+    padding: 150px 150px 30px;
+    width: 100%;
+    height: 100%; 
+    background-color: #007991c5;
+    color: #fff;
+}
+
+
+header.banner .overlay p {
+    font-size: var(--font-m);
+    width: 600px;
+    margin-top: 30px;
+}

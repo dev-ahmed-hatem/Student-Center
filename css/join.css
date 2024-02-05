@@ -1,0 +1,30 @@
+.join {
+    padding: 30px 150px 100px;
+    text-align: center;
+}
+
+.join h2 {
+    font-size: var(--font-xl);
+    margin-bottom: 10px;
+}
+
+.join p {
+    font-size: var(--font-m);
+    margin-bottom: 30px;
+}
+
+.join form input.tel{
+    border: 1px solid var(--gray-2);
+    display: inline-block;
+    width: 280px;
+    height: 37px;
+    color: var(--gray-2);
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+.join form input.submit {
+    height: 37px;
+    width: 125px;
+    font-size: var(--font-m);
+}
