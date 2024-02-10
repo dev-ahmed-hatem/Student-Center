@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="./css/home.css" />
         <link rel="stylesheet" href="./css/nav.css" />
         <link rel="stylesheet" href="./css/header.css" />
+        <link rel="stylesheet" href="./css/vision.css" />
         <link rel="stylesheet" href="./css/join.css" />
         <link rel="stylesheet" href="./css/footer.css" />
         <title>Student Center | Home</title>
@@ -14,24 +15,30 @@
     <body>
         <nav>
             <div class="logo">
-                <img src="./assets/images/logo.png" alt="" />
+                <a href="./index.html">
+                    <img src="./assets/images/logo.png" alt="" />
+                </a>
             </div>
             <ul class="links">
                 <li><a href="./index.html" class="active home">Home</a></li>
-                <li><a href="./about.html" class="about">About Us</a></li>
-                <li><a href="./contact.html" class="contact">Contact</a></li>
+                <li>
+                    <a href="./about.html" class="about">About Us</a>
+                </li>
+                <li>
+                    <a href="./contact.html" class="contact">Contact</a>
+                </li>
             </ul>
-            <button class="btn start-learning">
-                <a href="">Study Now!</a>
-            </button>
-            <button style="display: none" class="btn my-account">
-                <a href="">My Account</a>
-            </button>
+            <div class="user">
+                <button class="btn btn my-account">
+                    <a href="">Study Now!</a>
+                </button>
+                <a style="display: none" href="" class="logout">Logout</a>
+            </div>
         </nav>
 
         <header
             class="banner"
-            style="background: url(../assets/images/banner.jpg)"
+            style="background: url(./assets/images/banner.jpg)"
         >
             <div class="overlay">
                 <h1 class="heading">Teachers</h1>
@@ -69,7 +76,7 @@
                         fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                         voluptas.
                     </div>
-                    <a class="view" href="">View Lessons</a>
+                    <a class="view" href="./teacher.html">View Lessons</a>
                 </div>
             </div>
             <div class="teacher-card">
@@ -84,7 +91,7 @@
                         fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                         voluptas.
                     </div>
-                    <a class="view" href="">View Lessons</a>
+                    <a class="view" href="./teacher.html">View Lessons</a>
                 </div>
             </div>
             <div class="teacher-card">
@@ -99,7 +106,7 @@
                         fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                         voluptas.
                     </div>
-                    <a class="view" href="">View Lessons</a>
+                    <a class="view" href="./teacher.html">View Lessons</a>
                 </div>
             </div>
             <div class="teacher-card">
@@ -114,7 +121,7 @@
                         fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                         voluptas.
                     </div>
-                    <a class="view" href="">View Lessons</a>
+                    <a class="view" href="./teacher.html">View Lessons</a>
                 </div>
             </div>
             <div class="teacher-card">
@@ -129,7 +136,7 @@
                         fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                         voluptas.
                     </div>
-                    <a class="view" href="">View Lessons</a>
+                    <a class="view" href="./teacher.html">View Lessons</a>
                 </div>
             </div>
             <div class="teacher-card">
@@ -144,7 +151,7 @@
                         fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                         voluptas.
                     </div>
-                    <a class="view" href="">View Lessons</a>
+                    <a class="view" href="./teacher.html">View Lessons</a>
                 </div>
             </div>
         </div>
@@ -210,6 +217,6 @@
             </div>
         </footer>
 
-        <script src="./js/main.js"></script>
+        <!-- <script src="./js/main.js"></script> -->
     </body>
 </html>

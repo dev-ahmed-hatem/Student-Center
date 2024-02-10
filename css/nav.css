@@ -36,12 +36,23 @@ nav .links li a.active {
     cursor: pointer;
 }
 
+nav .user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 nav .btn { 
     width: 180px;
     height: 40px;
+    margin-right: 20px;
 }
 
 nav .btn:hover {
     cursor: pointer;
     background-color: transparent;
+}
+
+nav .logout {
+    color: var(--theme-color);
 }

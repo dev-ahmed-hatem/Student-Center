@@ -11,8 +11,8 @@
     --gray-3: #dddddd;
     --white: #fafafa;
     --text-black: #22323d;
-    --font-xxl: 70px;
-    --font-xl: 40px;
+    --font-xxl: 42px;
+    --font-xl: 29px;
     --font-l: 22px;
     --font-m: 17px;
     --font-s: 14px;
@@ -37,7 +37,7 @@ body {
 }
 
 .heading {
-    font-size: var(--font-xxl);
+    font-size: 70px;
 }
 
 .btn {

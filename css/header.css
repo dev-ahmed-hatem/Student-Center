@@ -1,9 +1,10 @@
-header.banner {
+header.banner { 
     background-size: cover;
     height: 450px;
     position: relative;
     border-radius: 0 0 120px;
     overflow: hidden;
+    box-shadow: 100px 1px var(--gray-1);
 }
 
 header.banner .overlay {

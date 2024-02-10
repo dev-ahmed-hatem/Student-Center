@@ -9,26 +9,30 @@
         <link rel="stylesheet" href="./css/header.css" />
         <link rel="stylesheet" href="./css/join.css" />
         <link rel="stylesheet" href="./css/footer.css" />
-        <title>Student Center | Home</title>
+        <title>Student Center | Contact</title>
     </head>
     <body>
         <nav>
             <div class="logo">
-                <img src="./assets/images/logo.png" alt="" />
+                <a href="./index.html">
+                    <img src="./assets/images/logo.png" alt="" />
+                </a>
             </div>
             <ul class="links">
                 <li><a href="./index.html" class="home">Home</a></li>
-                <li><a href="./about.html" class="about">About Us</a></li>
+                <li>
+                    <a href="./about.html" class="about">About Us</a>
+                </li>
                 <li>
                     <a href="./contact.html" class="active contact">Contact</a>
                 </li>
             </ul>
-            <button class="btn start-learning">
-                <a href="">Study Now!</a>
-            </button>
-            <button style="display: none" class="btn my-account">
-                <a href="">My Account</a>
-            </button>
+            <div class="user">
+                <button class="btn btn my-account">
+                    <a href="">Study Now!</a>
+                </button>
+                <a style="display: none" href="" class="logout">Logout</a>
+            </div>
         </nav>
 
         <header

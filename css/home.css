@@ -1,32 +1,3 @@
-.vision {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 90px 150px;
-}
-
-.vision .left h2 {
-    font-size: var(--font-xl);
-}
-
-.vision .left p {
-    font-weight: bold;
-    font-size: var(--font-m);
-    margin-bottom: 20px;
-}
-
-.vision .sep {
-    background-color: var(--theme-color);
-    height: 120px;
-    width: 1.5px;
-    border-radius: 20px;
-    margin: 0 100px;
-}
-
-.vision .right {
-    width: 60%;
-}
-
 .teachers {
     padding: 20px 150px 100px;
     display: flex;

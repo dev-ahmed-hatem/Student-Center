@@ -1,0 +1,25 @@
+function toggle(el) {
+    let contentContainer = el.parentElement.parentElement.querySelector(
+        ".content"
+    );
+    el.classList.contains("active")
+        ? (() => {
+              el.classList.remove("active");
+              el.querySelector(".text").innerHTML = "Expand";
+              contentContainer.style.maxHeight = 0;
+          })()
+        : (() => {
+              el.querySelector(".text").innerHTML = "Collapse";
+              el.classList.add("active");
+              contentContainer.style.maxHeight =
+                  contentContainer.scrollHeight + "px";
+          })();
+}
+
+window.onload = function () {
+    document.querySelectorAll(".expandable").forEach((el) => {
+        el.addEventListener("click", () => {
+            toggle(el.querySelector(".toggle"));
+        });
+    });
+};
