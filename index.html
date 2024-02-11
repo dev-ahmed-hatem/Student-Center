@@ -13,32 +13,35 @@
         <title>Student Center | Home</title>
     </head>
     <body>
-        <nav>
+        <nav id="nav">
             <div class="logo">
                 <a href="./index.html">
                     <img src="./assets/images/logo.png" alt="" />
                 </a>
             </div>
-            <ul class="links">
-                <li><a href="./index.html" class="active home">Home</a></li>
-                <li>
-                    <a href="./about.html" class="about">About Us</a>
-                </li>
-                <li>
-                    <a href="./contact.html" class="contact">Contact</a>
-                </li>
-            </ul>
-            <div class="user">
-                <button class="btn btn my-account">
-                    <a href="">Study Now!</a>
-                </button>
-                <a style="display: none" href="" class="logout">Logout</a>
+            <div class="menu-toggle" id="menu-btn">&#9776;</div>
+            <div class="content" id="menu-side">
+                <ul class="links">
+                    <li><a href="./index.html" class="active home">Home</a></li>
+                    <li>
+                        <a href="./about.html" class="about">About Us</a>
+                    </li>
+                    <li>
+                        <a href="./contact.html" class="contact">Contact</a>
+                    </li>
+                </ul>
+                <div class="user">
+                    <button class="btn my-account">
+                        <a href="">Study Now!</a>
+                    </button>
+                    <a style="display: none" href="" class="logout">Logout</a>
+                </div>
             </div>
         </nav>
 
         <header
             class="banner"
-            style="background: url(./assets/images/banner.jpg)"
+            style="background-image: url(./assets/images/banner.jpg)"
         >
             <div class="overlay">
                 <h1 class="heading">Teachers</h1>
@@ -217,6 +220,6 @@
             </div>
         </footer>
 
-        <!-- <script src="./js/main.js"></script> -->
+        <script src="./js/main.js"></script>
     </body>
 </html>

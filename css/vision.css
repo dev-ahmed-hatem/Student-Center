@@ -18,11 +18,34 @@
 .vision .sep {
     background-color: var(--theme-color);
     height: 120px;
-    width: 1.5px;
+    width: 2px;
     border-radius: 20px;
     margin: 0 100px;
 }
 
 .vision .right {
     width: 60%;
+    font-size: var(--font-m);
+}
+
+@media screen and (max-width: 768px) {
+    .vision {
+        padding: 50px 25px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .vision .left {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .vision .sep {
+        margin: 0;
+        height: 85px;
+    }
+
+    .vision .right {
+        width: 90%;
+    }
 }

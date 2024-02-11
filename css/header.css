@@ -8,7 +8,6 @@ header.banner {
 }
 
 header.banner .overlay {
-    content: "";
     position: absolute;
     padding: 150px 150px 30px;
     width: 100%;
@@ -17,9 +16,25 @@ header.banner .overlay {
     color: #fff;
 }
 
-
 header.banner .overlay p {
     font-size: var(--font-m);
     width: 600px;
     margin-top: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    header.banner {
+        height: 290px;
+        background-size: cover;
+    }
+
+    header.banner .overlay {
+        padding: 120px 30px 30px;
+    }
+
+    header.banner .overlay p {
+        margin-top: 15px;
+        width: 80vw;
+    }
+
 }

@@ -18,13 +18,33 @@
     display: inline-block;
     width: 280px;
     height: 37px;
-    color: var(--gray-2);
+    color: var(--gray-1);
     margin-right: 10px;
-    border-radius: 8px;
+    border-radius: 4px;
 }
 
 .join form input.submit {
     height: 37px;
     width: 125px;
     font-size: var(--font-m);
+}
+
+@media screen and (max-width: 768px) {
+    .join {
+        padding: 40px 20px;
+        text-align: left;
+    }
+
+    .join form {
+        width: 100%;
+    }
+
+    .join form input.tel {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .join form input.submit {
+        width: 100%;
+    }
 }

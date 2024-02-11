@@ -61,3 +61,15 @@
     border: 7px solid transparent;
     border-left: 7px solid var(--theme-color);
 }
+
+@media screen and (max-width: 768px) {
+    .teachers {
+        flex-wrap: wrap;
+        padding: 20px 30px;
+        justify-content: space-evenly;
+    }
+
+    .teachers .teacher-card {
+        width: 100%;
+    }
+}

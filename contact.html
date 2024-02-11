@@ -12,26 +12,31 @@
         <title>Student Center | Contact</title>
     </head>
     <body>
-        <nav>
+        <nav id="nav">
             <div class="logo">
                 <a href="./index.html">
                     <img src="./assets/images/logo.png" alt="" />
                 </a>
             </div>
-            <ul class="links">
-                <li><a href="./index.html" class="home">Home</a></li>
-                <li>
-                    <a href="./about.html" class="about">About Us</a>
-                </li>
-                <li>
-                    <a href="./contact.html" class="active contact">Contact</a>
-                </li>
-            </ul>
-            <div class="user">
-                <button class="btn btn my-account">
-                    <a href="">Study Now!</a>
-                </button>
-                <a style="display: none" href="" class="logout">Logout</a>
+            <div class="menu-toggle" id="menu-btn">&#9776;</div>
+            <div class="content" id="menu-side">
+                <ul class="links">
+                    <li><a href="./index.html" class="home">Home</a></li>
+                    <li>
+                        <a href="./about.html" class="about">About Us</a>
+                    </li>
+                    <li>
+                        <a href="./contact.html" class="active contact"
+                            >Contact</a
+                        >
+                    </li>
+                </ul>
+                <div class="user">
+                    <button class="btn my-account">
+                        <a href="">Study Now!</a>
+                    </button>
+                    <a style="display: none" href="" class="logout">Logout</a>
+                </div>
             </div>
         </nav>
 
@@ -80,8 +85,6 @@
                 <div class="map">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54651.502318032835!2d33.8046228!3d31.117544150000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14fdd350ea3dffa3%3A0x68343b437a6173d8!2sArish%2C%20Qesm%20Thaleth%20Al%20Arish%2C%20North%20Sinai%20Governorate!5e0!3m2!1sen!2seg!4v1707009896000!5m2!1sen!2seg"
-                        width="400"
-                        height="200"
                         style="border: 0"
                         allowfullscreen=""
                         loading="lazy"

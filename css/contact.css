@@ -39,6 +39,11 @@
     vertical-align: middle;
 }
 
+.contact-section .content .map iframe {
+    width: 400px;
+    height: 200px;
+}
+
 .contact-section .content .contact-info .icon.map {
     background-image: url(../assets/icons/pin.png);
 }
@@ -107,4 +112,50 @@
     width: 170px;
     height: 45px;
     font-size: var(--font-m);
+}
+
+@media screen and (max-width: 768px) {
+    .contact-section {
+        padding: 50px 25px;
+        flex-direction: column;
+    }
+
+    .contact-section .content {
+        margin-bottom: 30px;
+    }
+
+    .contact-section .content,
+    .contact-section form {
+        width: 100%;
+    }
+
+    .contact-section .content .sep {
+        border-top-width: 5px;
+        margin: 20px 0;
+    }
+
+    .contact-section .content p {
+        width: 100%;
+        font-size: var(--font-m);
+    }
+
+    .contact-section .content .contact-info {
+        font-size: var(--font-m);
+    }
+
+    .contact-section .content .contact-info .icon {
+        margin-right: 5px;
+    }
+
+    .contact-section .content .map iframe {
+        width: 100% !important;
+    }
+
+    .contact-section form {
+        padding: 25px;
+    }
+
+    .contact-section form p {
+        width: 100%;
+    }
 }

@@ -15,26 +15,29 @@
     <body>
         <div class="back"></div>
 
-        <nav>
+        <nav id="nav">
             <div class="logo">
                 <a href="./index.html">
                     <img src="./assets/images/logo.png" alt="" />
                 </a>
             </div>
-            <ul class="links">
-                <li><a href="./index.html" class="home">Home</a></li>
-                <li>
-                    <a href="./about.html" class="active about">About Us</a>
-                </li>
-                <li>
-                    <a href="./contact.html" class="contact">Contact</a>
-                </li>
-            </ul>
-            <div class="user">
-                <button class="btn btn my-account">
-                    <a href="">Study Now!</a>
-                </button>
-                <a style="display: none" href="" class="logout">Logout</a>
+            <div class="menu-toggle" id="menu-btn">&#9776;</div>
+            <div class="content" id="menu-side">
+                <ul class="links">
+                    <li><a href="./index.html" class="home">Home</a></li>
+                    <li>
+                        <a href="./about.html" class="active about">About Us</a>
+                    </li>
+                    <li>
+                        <a href="./contact.html" class="contact">Contact</a>
+                    </li>
+                </ul>
+                <div class="user">
+                    <button class="btn my-account">
+                        <a href="">Study Now!</a>
+                    </button>
+                    <a style="display: none" href="" class="logout">Logout</a>
+                </div>
             </div>
         </nav>
 

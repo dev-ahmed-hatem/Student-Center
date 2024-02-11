@@ -17,7 +17,7 @@ function toggle(el) {
 }
 
 window.onload = function () {
-    document.querySelectorAll(".expandable").forEach((el) => {
+    document.querySelectorAll(".expandable .title").forEach((el) => {
         el.addEventListener("click", () => {
             toggle(el.querySelector(".toggle"));
         });

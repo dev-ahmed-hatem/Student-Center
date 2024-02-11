@@ -6,7 +6,7 @@
     height: 100%;
     background-image: url("../assets/images/body-background.jpg");
     background-position: center;
-    background-size: contain 100%;
+    background-size: contain;
     background-repeat: no-repeat;
     z-index: -1;
 }
@@ -99,5 +99,77 @@ body > .about {
 .features .feature .content p {
     font-size: var(--font-m);
     font-weight: light;
+}
+
+@media screen and (max-width: 768px) {
+    .back {
+        background-size: cover;
+    }
+
+    .about-section {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .about-section > div {
+        width: 100%;
+    }
+
+    .about-section .img img {
+        width: 90vw;
+    }
+
+    .about-section .content {
+        padding: 20px 0;
+    }
+
+    .about-section .content p {
+        width: 95%;
+    }
+
+    .about-section .content .sep {
+        width: 80px;
+        margin: 15px 0;
+        border-top: 4px dashed var(--theme-color);
+    }
+
+    .about-section .content .name {
+        font-size: 21px;
+    }
+
+    .features {
+        padding: 30px;
+        flex-direction: column;   
+    }
+
+    .features .feature {
+        flex-direction: column;
+        margin-bottom: 25px;
+    }
+
+    .features .feature .icon {
+        width: 26px;
+        height: 26px;
+        margin-bottom: 10px;
+    }
+
+    .features .feature:nth-child(1) .icon svg {
+        width: 18px !important;
+    }
+
+    .features .feature:nth-child(2) .icon svg {
+        width: 15px !important;
+        margin-top: 3px;
+        margin-left: 1px;
+    }
+
+    .features .feature:nth-child(3) .icon svg {
+        width: 12px !important;
+    }
+
+    .features .feature .content h3 {
+        font-size: 17px;
+        margin-bottom: 5px;
+    }
 }
 
