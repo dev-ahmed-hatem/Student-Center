@@ -116,3 +116,36 @@ footer .rights {
         height: 40px;
     }
 }
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    footer {
+        padding: 30px 80px;
+    }
+
+    footer .content {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    footer .content .col {
+        text-align: center;
+    }
+
+    footer .content .col-1 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    footer .content .col-1 .description {
+        font-size: 14px;
+    }
+
+    footer .content .col-3 .title {
+        font-size: var(--font-m);
+    }
+    
+    footer .content .col-3 .info {
+        font-size: var(--font-s);
+    }
+}

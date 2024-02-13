@@ -145,3 +145,13 @@ nav .content .logout {
         margin-bottom: 20px;
     }
 }
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    nav {
+        padding: 15px 50px;
+    }
+
+    nav .content .user .btn {
+        width: 150px;
+    }
+} 

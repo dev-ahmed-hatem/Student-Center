@@ -31,7 +31,7 @@
 
 @media screen and (max-width: 768px) {
     .join {
-        padding: 40px 20px;
+        padding: 10px 20px 40px;
         text-align: left;
     }
 
@@ -46,5 +46,11 @@
 
     .join form input.submit {
         width: 100%;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .join {
+        padding: 0 140px 100px;
     }
 }

@@ -38,3 +38,18 @@ header.banner .overlay p {
     }
 
 }
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    header.banner {
+        height: 370px;
+    }
+
+    header.banner .overlay {
+        padding: 130px 50px 30px;
+    }
+
+    header.banner .overlay p {
+        margin-top: 20px;
+        width: 70vw;
+    }
+}

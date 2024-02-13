@@ -83,7 +83,7 @@ body > .about {
     fill: #000;
 }
 
-.features .feature .icon i svg{
+.features .feature .icon i svg {
     fill: #fff;
 }
 
@@ -139,7 +139,7 @@ body > .about {
 
     .features {
         padding: 30px;
-        flex-direction: column;   
+        flex-direction: column;
     }
 
     .features .feature {
@@ -173,3 +173,55 @@ body > .about {
     }
 }
 
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .about-section {
+        align-items: center;
+        padding: 0 30px 30px;
+    }
+
+    .about-section .img {
+        width: 55%;
+        margin-right: 25px;
+        text-align: center;
+    }
+
+    .about-section .img img {
+        width: 100%;
+    }
+
+    .about-section .content .sep {
+        margin: 20px 0;
+        border-top: 5px dashed var(--theme-color);
+    }
+
+    .about-section .content p {
+        margin-bottom: 30px;
+    }
+
+    .about-section .content .name {
+        font-size: var(--font-l);
+    }
+
+    .features {
+        padding: 50px 40px 0;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .features .feature {
+        width: 45%;
+        margin-bottom: 40px;
+    }
+
+    .features .feature .content h3 {
+        font-size: var(--font-l);
+    }
+
+    .features .feature .content p {
+        font-feature-settings: 15px;
+    }
+
+    .join {
+        padding-top: 50px !important;
+    }
+}
