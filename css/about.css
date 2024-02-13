@@ -225,3 +225,48 @@ body > .about {
         padding-top: 50px !important;
     }
 }
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+    .about-section .img {
+        display: flex;
+        align-items: center;
+    }
+
+    .about-section .img img {
+        width: 100%;
+    }
+
+    .about-section .content .sep {
+        margin: 20px 0;
+        border-top: 5px dashed var(--theme-color);
+    }
+
+    .about-section .content p {
+        margin-bottom: 30px;
+    }
+
+    .about-section .content .name {
+        font-size: var(--font-l);
+    }
+
+    .features {
+        padding: 70px 40px;
+        justify-content: space-evenly;
+    }
+
+    .features .feature {
+        width: calc(33.33% - 30px);
+    }
+
+    .features .feature .content h3 {
+        font-size: 19px;
+    }
+
+    .features .feature .content p {
+        font-size: 15px;
+    }
+
+    .features .feature .icon {
+        margin-right: 20px;
+    }
+}

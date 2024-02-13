@@ -59,3 +59,13 @@
         margin: 0 50px;
     }
 }
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+    .vision {
+        padding: 60px 70px;
+    }
+
+    .vision .sep {
+        margin: 0 50px;
+    }
+}

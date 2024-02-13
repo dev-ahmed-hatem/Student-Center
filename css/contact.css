@@ -184,3 +184,29 @@
         width: 45%;
     }
 }
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+    .contact-section {
+        padding: 80px 70px 50px;
+        justify-content: space-between;
+    }
+
+    .contact-section .content .sep {
+        border-top-width: 6px;
+        margin: 20px 0;
+    }
+
+    .contact-section .content .contact-info .icon {
+        margin-right: 20px;
+    }
+
+    .contact-section .content .map iframe {
+        width: 100% !important;
+        height: 250px;
+    }
+
+    .contact-section form {
+        padding: 25px;
+        width: 45%;
+    }
+}
