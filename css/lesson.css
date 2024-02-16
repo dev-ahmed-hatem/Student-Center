@@ -3,20 +3,20 @@ nav {
     background-color: var(--white);
 }
 
-nav .links li a {
+nav .content .links li a {
     color: var(--theme-color);
 }
 
-nav .links li a:hover,
-nav .links li a.active {
+nav .content .links li a:hover,
+nav .content .links li a.active {
     color: var(--secondary-color);
 }
 
-nav .btn:hover {
+nav .content .user .btn:hover {
     border-color: var(--secondary-color);
 }
 
-nav .btn:hover a {
+nav .content .user .btn:hover a {
     color: var(--secondary-color);
 }
 

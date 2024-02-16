@@ -95,6 +95,15 @@ body .main .content form .form-item input.text {
     height: 45px;
     font-size: 14px;
 }
+body .main .content form .form-item input[type=number]::-webkit-inner-spin-button,
+body .main .content form .form-item input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+body .main .content form .form-item input[type=number] {
+    -moz-appearance: textfield;
+}
 
 body .main .content form .form-item input.text::placeholder {
     color: #6c7275;
@@ -104,8 +113,20 @@ body .main .content form .form-item input.text:focus {
     border-bottom: 2px solid #000000;
 }
 
+body .main .content form .form-item input.text.invalid:focus {
+    border-bottom: 2px solid #f11f1f;
+}
+
+body .main .content form .form-item input.text.invalid {
+    border-bottom-color: #f11f1f;
+}
+
 body .main .content form .form-item.password {
     position: relative;
+}
+
+body .main .content form .form-item input.valid {
+    border-bottom-color: #38cb89 !important;
 }
 
 body .main .content form .form-item.password i {
@@ -156,9 +177,21 @@ body .main .content form .form-item.terms input {
     margin: 0 10px 0 4px;
 }
 
+body .main .content form .form-item.message {
+    color: #f11f1f;
+    text-align: center;
+    font-weight: bolder;
+    font-size: var(--font-s);
+}
+
 body .main .content form .form-item input[type="submit"] {
     width: 100%;
     height: 52px;
+}
+
+body .main .content form .form-item input[type="submit"]:disabled {
+    opacity: 70%;
+    cursor: not-allowed;
 }
 
 /* small mobile devices */
