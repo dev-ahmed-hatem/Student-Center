@@ -1,0 +1,105 @@
+{% extends 'base/main.html' %}
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'base/css/contact.css' %}"/>
+{% endblock %}
+
+{% block title %}Student Center | Contact{% endblock %}
+
+{% block header-background %}
+    {% static 'base/assets/images/contact-banner.jpg' %}
+{% endblock %}
+
+{% block header-title %}
+    Get in Touch
+{% endblock %}
+
+{% block header-content %}
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar
+    dapibus leo.
+{% endblock %}
+
+{% block vision %}
+
+{% endblock %}
+
+{% block body-content %}
+
+    <div class="contact-section">
+        <div class="content">
+            <h1>Contact Us</h1>
+            <div class="sep"></div>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus
+                leo.
+            </p>
+            <div class="contact-info">
+                <span class="icon map"></span>
+                <span class="info"
+                >123 Fifth Avenue, New York, NY 10160</span
+                >
+            </div>
+            <div class="contact-info">
+                <span class="icon envelope"></span>
+                <span class="info">contact@example.com</span>
+            </div>
+            <div class="contact-info">
+                <span class="icon phone"></span>
+                <span class="info">+201234567890 </span>
+            </div>
+            <div class="links">
+                <span>Keep in Touch</span>
+                <a class="social-icon facebook"></a>
+                <a class="social-icon youtube"></a>
+            </div>
+            <div class="map">
+                <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54651.502318032835!2d33.8046228!3d31.117544150000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14fdd350ea3dffa3%3A0x68343b437a6173d8!2sArish%2C%20Qesm%20Thaleth%20Al%20Arish%2C%20North%20Sinai%20Governorate!5e0!3m2!1sen!2seg!4v1707009896000!5m2!1sen!2seg"
+                        style="border: 0"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+            </div>
+        </div>
+        <form action="">
+            <h2>Have Questions?</h2>
+            <p>
+                Feel free to reach out if you have any questions or need
+                assistance.
+            </p>
+            <input
+                    required
+                    type="text"
+                    class="text"
+                    name=""
+                    id=""
+                    placeholder="Name"
+            />
+            <input
+                    required
+                    type="tel"
+                    class="text"
+                    name=""
+                    id=""
+                    placeholder="Phone"
+            />
+            <input
+                    required
+                    type="text"
+                    class="text"
+                    name=""
+                    id=""
+                    placeholder="Subject"
+            />
+            <textarea
+                    name="message"
+                    id="msg"
+                    placeholder="Your Message"
+            ></textarea>
+            <input type="submit" class="btn submit" value="Send Message"/>
+        </form>
+    </div>
+{% endblock %}

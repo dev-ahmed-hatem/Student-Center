@@ -1,0 +1,55 @@
+header.banner { 
+    background-size: cover;
+    height: 450px;
+    position: relative;
+    border-radius: 0 0 120px;
+    overflow: hidden;
+    box-shadow: 100px 1px var(--gray-1);
+}
+
+header.banner .overlay {
+    position: absolute;
+    padding: 150px 150px 30px;
+    width: 100%;
+    height: 100%; 
+    background-color: #007991c5;
+    color: #fff;
+}
+
+header.banner .overlay p {
+    font-size: var(--font-m);
+    width: 600px;
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    header.banner {
+        height: 290px;
+        background-size: cover;
+    }
+
+    header.banner .overlay {
+        padding: 120px 30px 30px;
+    }
+
+    header.banner .overlay p {
+        margin-top: 15px;
+        width: 80vw;
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    header.banner {
+        height: 370px;
+    }
+
+    header.banner .overlay {
+        padding: 130px 50px 30px;
+    }
+
+    header.banner .overlay p {
+        margin-top: 20px;
+        width: 70vw;
+    }
+}

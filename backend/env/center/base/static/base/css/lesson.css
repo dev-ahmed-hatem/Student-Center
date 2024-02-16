@@ -1,0 +1,126 @@
+nav {
+    position: static;
+    background-color: var(--white);
+}
+
+nav .content .links li a {
+    color: var(--theme-color);
+}
+
+nav .content .links li a:hover,
+nav .content .links li a.active {
+    color: var(--secondary-color);
+}
+
+nav .content .user .btn:hover {
+    border-color: var(--secondary-color);
+}
+
+nav .content .user .btn:hover a {
+    color: var(--secondary-color);
+}
+
+.lesson-section {
+    margin: 40px 60px;
+    background-color: var(--white);
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.lesson-section iframe {
+    width: 70vw;
+    height: 80vh;
+    align-self: center;
+    margin-bottom: 20px;
+}
+
+.lesson-section .photo {
+    width: 50vw;
+    height: unset;
+    align-self: center;
+    margin-bottom: 50px;
+}
+
+.lesson-section .video-title {
+    font-size: var(--font-l);
+    margin-bottom: 50px;
+    margin-left: 100px;
+    font-weight: lighter;
+}
+
+.lesson-section h1 {
+    font-size: var(--font-xxl);
+    margin-bottom: 20px;
+}
+
+.lesson-section p.description {
+    font-size: var(--font-m);
+    margin-bottom: 60px;
+}
+
+.lesson-section .appendices h2 {
+    font-size: var(--font-xl);
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    nav .content .links li a {
+        color: #ffffff;
+    }
+
+    .lesson-section {
+        margin: 30px 20px;
+        padding: 30px 20px;
+    }
+
+    .lesson-section iframe {
+        width: 100%;
+        height: 200px;
+        align-self: center;
+        margin-bottom: 10px;
+    }
+
+    .lesson-section .video-title {
+        font-size: 16px;
+        margin-bottom: 25px;
+        margin-left: 50px;
+        font-weight: lighter;
+    }
+    
+    .lesson-section .photo {
+        width: 65vw;
+        height: unset;
+        align-self: center;
+        margin-bottom: 30px;
+    }
+
+    .lesson-section h1 {
+        margin-bottom: 10px;
+    }
+
+    .lesson-section p.description {
+        margin-bottom: 30px;
+    }
+
+    .lesson-section .appendices h2 {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .lesson-section {
+        margin: 40px;
+        padding: 40px;
+    }
+
+    .lesson-section iframe {
+        height: 350px;
+    }
+
+    .lesson-section .video-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+}

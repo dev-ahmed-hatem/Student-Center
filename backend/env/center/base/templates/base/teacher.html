@@ -1,0 +1,179 @@
+{% extends 'base/main.html' %}
+{% load static %}
+
+{% block title %}
+    Student Center | Teacher's Name
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'base/css/lesson.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/expandable.css' %}">
+{% endblock %}
+
+{% block nav-logo %}
+    <img src="{% static 'base/assets/images/logo-regular.png' %}" alt=""/>
+{% endblock %}
+
+{% block vision %}
+
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block body-content %}
+    <div class="lesson-section">
+        <img src="{{ teacher.img.url }}" alt="teacher's image" class="photo"/>
+        <h2 class="video-title">{{ teacher.title }}</h2>
+        <h1>{{ teacher.name }}</h1>
+        <p class="description">
+            {{ teacher.description }}
+        </p>
+        <div class="appendices">
+            <h2>Lessons List</h2>
+            {% if grade10 %}
+                <div class="appendix expandable">
+                    <div class="title">
+                        <h4>Grade 10</h4>
+                        <div class="toggle">
+                            <i class="icon">
+                                <svg
+                                        width="13px"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 448 512"
+                                >
+                                    <path
+                                            fill="#fff"
+                                            d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"
+                                    />
+                                </svg>
+                            </i>
+                            <span class="text">Expand</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="content-header">
+                            <h3>
+                                <img
+                                        class="icon"
+                                        src="{% static 'base/assets/icons/notebook.svg' %}"
+                                        alt=""
+                                        srcset=""
+                                />
+
+                                Contents
+                            </h3>
+                        </div>
+                        <div class="content-item">
+                            <ul>
+                                {% for lesson in grade10 %}
+                                    <li>
+                                        <a href="{% url 'lesson' lesson.id %}">{{ lesson.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            {% endif %}
+            {% if grade11 %}
+                <div class="appendix expandable">
+                    <div class="title">
+                        <h4>Grade 11</h4>
+                        <div class="toggle">
+                            <i class="icon">
+                                <svg
+                                        width="13px"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 448 512"
+                                >
+                                    <path
+                                            fill="#fff"
+                                            d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"
+                                    />
+                                </svg>
+                            </i>
+                            <span class="text">Expand</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="content-header">
+                            <h3>
+                                <img
+                                        class="icon"
+                                        src="{% static 'base/assets/icons/notebook.svg' %}"
+                                        alt=""
+                                        srcset=""
+                                />
+
+                                Contents
+                            </h3>
+                        </div>
+                        <div class="content-item">
+                            <ul>
+                                {% for lesson in grade11 %}
+                                    <li>
+                                        <a href="{% url 'lesson' lesson.id %}">{{ lesson.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            {% endif %}
+            {% if grade12 %}
+                <div class="appendix expandable">
+                    <div class="title">
+                        <h4>Grade 12</h4>
+                        <div class="toggle">
+                            <i class="icon">
+                                <svg
+                                        width="13px"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 448 512"
+                                >
+                                    <path
+                                            fill="#fff"
+                                            d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"
+                                    />
+                                </svg>
+                            </i>
+                            <span class="text">Expand</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="content-header">
+                            <h3>
+                                <img
+                                        class="icon"
+                                        src="{% static 'base/assets/icons/notebook.svg' %}"
+                                        alt=""
+                                        srcset=""
+                                />
+
+                                Contents
+                            </h3>
+                        </div>
+                        <div class="content-item">
+                            <ul>
+                                {% for lesson in grade12 %}
+                                    <li>
+                                        <a href="{% url 'lesson' lesson.id %}">{{ lesson.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'base/js/expandable.js' %}"></script>
+{% endblock %}

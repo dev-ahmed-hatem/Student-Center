@@ -1,0 +1,130 @@
+{% extends 'base/main.html' %}
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'base/css/home.css' %}">
+{% endblock %}
+
+{% block title %}Student Center | Home{% endblock %}
+
+{% block header-background %}
+    {% static 'base/assets/images/banner.jpg' %}
+{% endblock %}
+
+{% block header-title %}
+    Teachers
+{% endblock %}
+
+{% block header-content %}
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar
+    dapibus leo.
+{% endblock %}
+
+{% block vision-subheading %}
+    Teachers With Vision
+{% endblock %}
+
+{% block vision-heading %}
+    Our Teachers
+{% endblock %}
+
+{% block vision-content %}
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim.
+{% endblock %}
+
+{% block body-content %}
+    <div class="teachers">
+        {% for teacher in teachers %}
+            <div class="teacher-card">
+                <div class="img">
+                    <img src="{{ teacher.img.url }}" alt=""/>
+                </div>
+                <div class="content">
+                    <div class="subject">{{ teacher.title }}</div>
+                    <div class="name">{{ teacher.name }}</div>
+                    <div class="description">
+                        {{ teacher.description }}
+                    </div>
+                    <a class="view" href="{% url 'teacher' teacher.id %}">View Lessons</a>
+                </div>
+            </div>
+        {% endfor %}
+
+        {#        <div class="teacher-card">#}
+        {#            <div class="img">#}
+        {#                <img src="{% static 'base/assets/images/teacher.jpg' %}" alt=""/>#}
+        {#            </div>#}
+        {#            <div class="content">#}
+        {#                <div class="subject">Arabic Teacher</div>#}
+        {#                <div class="name">Mr. Mohamad Hasan</div>#}
+        {#                <div class="description">#}
+        {#                    Duis aute irure dolor in velit esse cillum dolore eu#}
+        {#                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat#}
+        {#                    voluptas.#}
+        {#                </div>#}
+        {#                <a class="view" href="{% url 'teacher' %}">View Lessons</a>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <div class="teacher-card">#}
+        {#            <div class="img">#}
+        {#                <img src="{% static 'base/assets/images/teacher.jpg' %}" alt=""/>#}
+        {#            </div>#}
+        {#            <div class="content">#}
+        {#                <div class="subject">Arabic Teacher</div>#}
+        {#                <div class="name">Mr. Mohamad Hasan</div>#}
+        {#                <div class="description">#}
+        {#                    Duis aute irure dolor in velit esse cillum dolore eu#}
+        {#                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat#}
+        {#                    voluptas.#}
+        {#                </div>#}
+        {#                <a class="view" href="{% url 'teacher' %}">View Lessons</a>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <div class="teacher-card">#}
+        {#            <div class="img">#}
+        {#                <img src="{% static 'base/assets/images/teacher.jpg' %}" alt=""/>#}
+        {#            </div>#}
+        {#            <div class="content">#}
+        {#                <div class="subject">Arabic Teacher</div>#}
+        {#                <div class="name">Mr. Mohamad Hasan</div>#}
+        {#                <div class="description">#}
+        {#                    Duis aute irure dolor in velit esse cillum dolore eu#}
+        {#                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat#}
+        {#                    voluptas.#}
+        {#                </div>#}
+        {#                <a class="view" href="{% url 'teacher' %}">View Lessons</a>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <div class="teacher-card">#}
+        {#            <div class="img">#}
+        {#                <img src="{% static 'base/assets/images/teacher.jpg' %}" alt=""/>#}
+        {#            </div>#}
+        {#            <div class="content">#}
+        {#                <div class="subject">Arabic Teacher</div>#}
+        {#                <div class="name">Mr. Mohamad Hasan</div>#}
+        {#                <div class="description">#}
+        {#                    Duis aute irure dolor in velit esse cillum dolore eu#}
+        {#                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat#}
+        {#                    voluptas.#}
+        {#                </div>#}
+        {#                <a class="view" href="{% url 'teacher' %}">View Lessons</a>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <div class="teacher-card">#}
+        {#            <div class="img">#}
+        {#                <img src="{% static 'base/assets/images/teacher.jpg' %}" alt=""/>#}
+        {#            </div>#}
+        {#            <div class="content">#}
+        {#                <div class="subject">Arabic Teacher</div>#}
+        {#                <div class="name">Mr. Mohamad Hasan</div>#}
+        {#                <div class="description">#}
+        {#                    Duis aute irure dolor in velit esse cillum dolore eu#}
+        {#                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat#}
+        {#                    voluptas.#}
+        {#                </div>#}
+        {#                <a class="view" href="{% url 'teacher' %}">View Lessons</a>#}
+        {#            </div>#}
+        {#        </div>#}
+    </div>
+{% endblock %}

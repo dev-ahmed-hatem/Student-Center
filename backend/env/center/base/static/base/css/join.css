@@ -1,0 +1,56 @@
+.join {
+    padding: 30px 150px 100px;
+    text-align: center;
+}
+
+.join h2 {
+    font-size: var(--font-xxl);
+    margin-bottom: 10px;
+}
+
+.join p {
+    font-size: var(--font-m);
+    margin-bottom: 30px;
+}
+
+.join form input.tel{
+    border: 1px solid var(--gray-2);
+    display: inline-block;
+    width: 280px;
+    height: 37px;
+    color: var(--gray-1);
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+.join form input.submit {
+    height: 37px;
+    width: 125px;
+    font-size: var(--font-m);
+}
+
+@media screen and (max-width: 768px) {
+    .join {
+        padding: 10px 20px 40px;
+        text-align: left;
+    }
+
+    .join form {
+        width: 100%;
+    }
+
+    .join form input.tel {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .join form input.submit {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .join {
+        padding: 0 140px 100px;
+    }
+}

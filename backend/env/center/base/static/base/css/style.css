@@ -1,0 +1,131 @@
+@font-face {
+    font-family: "open sans";
+    src: url("../assets/fonts/open\ sans/OpenSans-Regular.ttf");
+}
+
+:root {
+    --theme-color: #ff9635;
+    --secondary-color: #007991;
+    --gray-1: #ecf0f2;
+    --gray-2: #666666;
+    --gray-3: #dddddd;
+    --white: #fafafa;
+    --text-black: #22323d;
+    --font-xxl: 42px;
+    --font-xl: 29px;
+    --font-l: 22px;
+    --font-m: 17px;
+    --font-s: 14px;
+    --font-xs: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "open sans";
+    /* direction: rtl; */
+}
+
+*:not(body) {
+    transition: all 0.2s ease-in-out;
+}
+
+*::selection {
+    background-color: var(--theme-color);
+    color: var(--secondary-color);
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--gray-1);
+    overflow-x: hidden;
+}
+
+.heading {
+    font-size: 70px;
+}
+
+.btn {
+    border: none;
+    background-color: var(--theme-color);
+    border-radius: 20px;
+    border: 2px solid var(--theme-color);
+    color: var(--white);
+    font-weight: bold;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--theme-color);
+}
+
+.btn a {
+    text-decoration: none;
+    font-size: var(--font-m);
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a.social-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 8px;
+    background-position: center center;
+    filter: grayscale(1);
+    background-size: 100%;
+}
+
+a.social-icon:hover {
+    filter: grayscale(0);
+}
+
+a.social-icon.facebook {
+    background-image: url(../assets/icons/facebook.png);
+}
+
+a.social-icon.youtube {
+    background-image: url(../assets/icons/youtube.png);
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --font-xxl: 26px;
+        --font-xl: 24px;
+        --font-l: 22px;
+        --font-m: 14px;
+        --font-s: 12px;
+    }
+
+    .heading {
+        font-size: var(--font-l);
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    :root {
+        --font-xxl: 32px;
+        --font-xl: 28px;
+        --font-l: 24px;
+        --font-m: 16px;
+        --font-s: 13px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    a.social-icon {
+        color: var(--secondary-color);
+        filter: grayscale(0);
+    }
+}
