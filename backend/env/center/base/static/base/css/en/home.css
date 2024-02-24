@@ -49,7 +49,7 @@
 
 .teachers .teacher-card .content .view {
     color: var(--theme-color);
-    padding-right: 15px;
+    padding-left: 15px;
     position: relative;
     text-decoration: none;
 }
@@ -63,10 +63,10 @@
     width: 0;
     height: 0;
     position: absolute;
-    right: 0;
+    left: 0;
     top: 5px;
     border: 7px solid transparent;
-    border-right: 7px solid var(--theme-color);
+    border-left: 7px solid var(--theme-color);
 }
 
 @media screen and (max-width: 768px) {

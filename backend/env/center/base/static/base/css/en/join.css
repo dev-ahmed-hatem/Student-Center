@@ -32,7 +32,7 @@
 @media screen and (max-width: 768px) {
     .join {
         padding: 10px 20px 40px;
-        text-align: right;
+        text-align: left;
     }
 
     .join form {

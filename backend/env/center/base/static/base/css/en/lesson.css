@@ -45,7 +45,7 @@ nav .content .user .btn:hover a {
 .lesson-section .video-title {
     font-size: var(--font-l);
     margin-bottom: 50px;
-    margin-right: 100px;
+    margin-left: 100px;
     font-weight: lighter;
 }
 
@@ -69,10 +69,6 @@ nav .content .user .btn:hover a {
         color: #ffffff;
     }
 
-    nav .content .links li a:hover, nav .content .links li a.active {
-        color: var(--theme-color);
-    }
-
     .lesson-section {
         margin: 30px 20px;
         padding: 30px 20px;
@@ -91,7 +87,7 @@ nav .content .user .btn:hover a {
         margin-left: 50px;
         font-weight: lighter;
     }
-
+    
     .lesson-section .photo {
         width: 65vw;
         height: unset;

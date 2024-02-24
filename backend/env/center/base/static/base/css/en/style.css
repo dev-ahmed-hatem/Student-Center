@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "rubik";
-    src: url("../assets/fonts/rubik/Rubik-Regular.ttf");
+    font-family: "open sans";
+    src: url("../assets/fonts/open\ sans/OpenSans-Regular.ttf");
 }
 
 :root {
@@ -23,8 +23,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "rubik";
-    direction: rtl;
+    font-family: "open sans";
+    /*direction: rtl;*/
 }
 
 *:not(body) {

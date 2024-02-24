@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm
 from .models import Teacher, Lesson, Appendix
 
@@ -18,6 +19,7 @@ def contact(request):
     return render(request, 'base/contact.html')
 
 
+@login_required
 def teacher(request, pk):
     teacher_ = Teacher.objects.get(id=pk)
     grade10 = Lesson.objects.filter(teacher=teacher_, grade=10)
@@ -29,6 +31,7 @@ def teacher(request, pk):
                                                          "grade12": grade12, })
 
 
+@login_required
 def lesson(request, pk):
     lesson_ = Lesson.objects.get(id=pk)
     appendices = Appendix.objects.filter(lesson=lesson_)
@@ -48,7 +51,8 @@ def login_view(request):
             login(request, user)
             if remember:
                 request.session.set_expiry(2592000)
-            return redirect('home')
+            next_url = request.GET.get("next", "home")
+            return redirect(next_url)
         else:
             return render(request, 'base/sign-in.html', context={"error": "Incorrect username or password"})
 

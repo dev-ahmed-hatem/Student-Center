@@ -5,11 +5,11 @@ function toggle(el) {
     el.classList.contains("active")
         ? (() => {
               el.classList.remove("active");
-              el.querySelector(".text").innerHTML = "Expand";
+              el.querySelector(".text").innerHTML = "عرض";
               contentContainer.style.maxHeight = 0;
           })()
         : (() => {
-              el.querySelector(".text").innerHTML = "Collapse";
+              el.querySelector(".text").innerHTML = "إخفاء";
               el.classList.add("active");
               contentContainer.style.maxHeight =
                   contentContainer.scrollHeight + "px";
