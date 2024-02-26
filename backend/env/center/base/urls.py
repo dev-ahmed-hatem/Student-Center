@@ -13,4 +13,5 @@ urlpatterns = [
                   path('login/', views.login_view, name="login"),
                   path('signup/', views.signup_view, name="signup"),
                   path('logout/', views.logout_view, name="logout"),
+                  path('recieve-contact-message/', views.recieve_contact_message, name="contact-message"),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

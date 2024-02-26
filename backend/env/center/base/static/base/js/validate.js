@@ -14,7 +14,7 @@ function validatePhone(element) {
     } else {
         element.classList.add("invalid");
         element.classList.remove("valid");
-        messageSpan.innerHTML = "Phone number is not valid!";
+        messageSpan.innerHTML = "رقم موبايل غير صالح!";
     }
 }
 
@@ -22,7 +22,7 @@ function validatePassword(element) {
     if ((element.value.length < 8) | !/\d/.test(element.value)) {
         element.classList.remove("valid");
         element.classList.add("invalid");
-        messageSpan.innerHTML = "Password is not valid!";
+        messageSpan.innerHTML = "كلمة مرور ضعيفة!";
     } else {
         element.classList.add("valid");
         element.classList.remove("invalid");
@@ -33,7 +33,7 @@ function validatePassword(element) {
 
 function checkSimilarity(element) {
     if (!password.classList.contains("valid")) {
-        messageSpan.innerHTML = "Password is not valid!";
+        messageSpan.innerHTML = "كلمة مرور ضعيفة!";
         element.classList.remove("valid");
         element.classList.add("invalid");
     } else {
@@ -47,7 +47,7 @@ function checkSimilarity(element) {
         } else {
             element.classList.remove("valid");
             element.classList.add("invalid");
-            messageSpan.innerHTML = "Passwords are not identical!";
+            messageSpan.innerHTML = "كلمات مرور غير متطابقة!";
         }
     }
 }

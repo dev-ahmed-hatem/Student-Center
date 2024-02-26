@@ -13,7 +13,7 @@ class UserProfile(models.Model):
 
 
 class Teacher(models.Model):
-    img = models.ImageField(upload_to='teachers/', blank=True, null=True)
+    img = models.ImageField(upload_to='teachers/')
     title = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=125)
@@ -49,3 +49,15 @@ class Appendix(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=20)
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    created_at = models.TimeField(verbose_name="created at")
+    ip_address = models.GenericIPAddressField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.subject} from {self.name}"

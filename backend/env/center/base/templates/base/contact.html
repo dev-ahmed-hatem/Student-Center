@@ -64,7 +64,8 @@
                 ></iframe>
             </div>
         </div>
-        <form action="">
+        <form action="" method="post" id="contact-form" onsubmit="sendData(event, this, {% url "contact-message" %})">
+            {% csrf_token %}
             <h2>لديك أسئلة؟</h2>
             <p>
                 لا تتردد في التواصل معنا إذا كانت لديك أي أسئلة أو كنت بحاجة إلى المساعدة.
@@ -73,32 +74,36 @@
                     required
                     type="text"
                     class="text"
-                    name=""
+                    name="name"
                     id=""
-                    placeholder="Name"
+                    placeholder="الاسم"
             />
             <input
                     required
                     type="tel"
                     class="text"
-                    name=""
+                    name="phone-number"
                     id=""
-                    placeholder="Phone"
+                    placeholder="رقم الموبايل"
             />
             <input
                     required
                     type="text"
                     class="text"
-                    name=""
+                    name="subject"
                     id=""
-                    placeholder="Subject"
+                    placeholder="الموضوع"
             />
             <textarea
                     name="message"
                     id="msg"
-                    placeholder="Your Message"
+                    placeholder="رسالتك"
             ></textarea>
-            <input type="submit" class="btn submit" value="Send Message"/>
+            <input type="submit" class="btn submit" value="إرسال"/>
         </form>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static "base/js/contact.js" %}"></script>
 {% endblock %}

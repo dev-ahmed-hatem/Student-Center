@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm
-from .models import Teacher, Lesson, Appendix
+from .models import Teacher, Lesson, Appendix, ContactMessage
+from django.http import JsonResponse
+from django.utils import timezone
+from datetime import timedelta
 
 
 # Create your views here.
@@ -87,3 +90,39 @@ def signup_view(request):
 def logout_view(request):
     logout(request)
     return redirect("login")
+
+
+def recieve_contact_message(request):
+    if request.method == 'POST':
+        # Get form data from POST request
+        ip_address = request.META.get('REMOTE_ADDR')
+
+        # Check if a message has been sent by this IP address within the last minute
+        last_minute = timezone.now() - timedelta(minutes=1)
+        print(last_minute.minute)
+        objects = ContactMessage.objects.filter(ip_address=ip_address, created_at__gte=last_minute)
+        messages_sent = objects.count()
+        print(objects)
+
+        if messages_sent >= 1:
+            # Return error response if message has been sent within the last minute
+            return JsonResponse({'status': 'error',
+                                 'message': 'لقد قمت بالفعل بإرسال رسالة خلال آخر 15 دقيقة. الرجاء معاودة المحاولة في وقت لاحق.'})
+        else:
+            name = request.POST.get('name')
+            phone_number = request.POST.get('phone-number')
+            subject = request.POST.get('subject')
+            message = request.POST.get('message')
+            print("here")
+
+            # Create ContactMessage object and save it to the database
+            contact_message = ContactMessage(name=name, phone_number=phone_number, subject=subject, message=message,
+                                             ip_address=ip_address)
+            contact_message.save()
+
+            # Return success response
+            return JsonResponse({'status': 'success', 'message': 'تم إرسال رسالتك!'})
+    else:
+        # Return error response if request method is not POST
+        return JsonResponse(
+            {'status': 'error', 'message': 'حدث خطأ أثناء إرسال الرسالة. الرجاء معاودة المحاولة في وقت لاحق.'})

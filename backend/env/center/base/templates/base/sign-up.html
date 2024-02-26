@@ -16,18 +16,18 @@
     <div class="content">
         <form id="register" method="POST">
             {% csrf_token %}
-            <h1 class="heading">Sign up</h1>
+            <h1 class="heading">تسجيل حساب جديد</h1>
             <p>
-                Already have an account?
+                لديك حساب بالفعل؟
                 <span class="green-txt link"
-                ><a href="{% url 'login' %}">Sign in</a></span
+                ><a href="{% url 'login' %}">تسجيل دخول</a></span
                 >
             </p>
             <div class="form-item">
                 <input
                         type="text"
                         class="text"
-                        placeholder="Your name"
+                        placeholder="الاسم"
                         id="name"
                         name="name"
                         {% if name %}
@@ -41,7 +41,7 @@
                 <input
                         type="text"
                         class="text"
-                        placeholder="Username"
+                        placeholder="اسم المستخدم (يستخدم لتسجيل الدخول)"
                         id="username"
                         name="username"
                         required
@@ -52,7 +52,7 @@
                         type="number"
                         maxlength="11"
                         class="text {% if phone %}valid{% endif %}"
-                        placeholder="Phone number"
+                        placeholder="رقم الموبايل"
                         id="phone"
                         oninput="validatePhone(this);"
                         onfocus="validatePhone(this);"
@@ -66,7 +66,7 @@
                 <input
                         type="password"
                         class="text"
-                        placeholder="Password"
+                        placeholder="كلمة المرور"
                         id="password"
                         oninput="validatePassword(this);"
                         onfocus="validatePassword(this);"
@@ -109,7 +109,7 @@
                 <input
                         type="password"
                         class="text"
-                        placeholder="Confirm password"
+                        placeholder="تأكيد كلمة المرور"
                         id="confirm-password"
                         oninput="checkSimilarity(this);"
                         onfocus="checkSimilarity(this);"
@@ -151,8 +151,8 @@
             <div class="form-item terms">
                 <input type="checkbox" name="terms-of-use" id="terms"/>
                 <label for="terms">
-                    I agree with <b>Privacy Policy</b> and
-                    <b>Terms of Use</b>
+                    بتسجيل الدخول أنت توافق علي <b>سياسة الخصوصية</b> و
+                    <b>شروط الاستخدام</b>
                 </label>
             </div>
             <div class="form-item message">
@@ -162,7 +162,7 @@
                 <input
                         class="brand-btn"
                         type="submit"
-                        value="Sign Up"
+                        value="تسجيل حساب"
                         id="submit-btn"
                 />
             </div>
