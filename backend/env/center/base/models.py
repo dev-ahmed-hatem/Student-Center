@@ -56,7 +56,7 @@ class ContactMessage(models.Model):
     phone_number = models.CharField(max_length=20)
     subject = models.CharField(max_length=200)
     message = models.TextField()
-    created_at = models.TimeField(verbose_name="created at")
+    created_at = models.TimeField(auto_now_add=True, verbose_name="created at")
     ip_address = models.GenericIPAddressField(blank=True, null=True)
 
     def __str__(self):

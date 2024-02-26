@@ -4,8 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm
 from .models import Teacher, Lesson, Appendix, ContactMessage
 from django.http import JsonResponse
-from django.utils import timezone
-from datetime import timedelta
+from django.utils.timezone import localtime, timedelta
 
 
 # Create your views here.
@@ -57,7 +56,7 @@ def login_view(request):
             next_url = request.GET.get("next", "home")
             return redirect(next_url)
         else:
-            return render(request, 'base/sign-in.html', context={"error": "Incorrect username or password"})
+            return render(request, 'base/sign-in.html', context={"error": "اسم المستخدم أو كلمة المرور غير صحيحة"})
 
     else:
         return render(request, 'base/sign-in.html')
@@ -72,16 +71,13 @@ def signup_view(request):
             form.save()
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password1")
-            print(username)
-            print(password)
             user = authenticate(username=username, password=password)
-            print(user)
             if user is not None:
                 login(request, user)
                 return redirect('home')
         else:
             return render(request, 'base/sign-up.html',
-                          context={"error": f"User {request.POST.get('username')} is not available",
+                          context={"error": f"اسم المستخدم   ( {request.POST.get('username')} )   غير متاح",
                                    "name": request.POST.get("name"),
                                    "phone": request.POST.get("phone")})
     return render(request, 'base/sign-up.html')
@@ -98,11 +94,9 @@ def recieve_contact_message(request):
         ip_address = request.META.get('REMOTE_ADDR')
 
         # Check if a message has been sent by this IP address within the last minute
-        last_minute = timezone.now() - timedelta(minutes=1)
-        print(last_minute.minute)
+        last_minute = localtime() - timedelta(minutes=15)
         objects = ContactMessage.objects.filter(ip_address=ip_address, created_at__gte=last_minute)
         messages_sent = objects.count()
-        print(objects)
 
         if messages_sent >= 1:
             # Return error response if message has been sent within the last minute
@@ -113,7 +107,6 @@ def recieve_contact_message(request):
             phone_number = request.POST.get('phone-number')
             subject = request.POST.get('subject')
             message = request.POST.get('message')
-            print("here")
 
             # Create ContactMessage object and save it to the database
             contact_message = ContactMessage(name=name, phone_number=phone_number, subject=subject, message=message,
