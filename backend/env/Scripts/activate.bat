@@ -1,4 +1,9 @@
-@set "VIRTUAL_ENV=D:\Pro\Work\sina\student center\backend\env"
+@set "VIRTUAL_ENV=E:\Pro\Work\sina\student center\backend\env"
+
+@set "VIRTUAL_ENV_PROMPT="
+@if NOT DEFINED VIRTUAL_ENV_PROMPT (
+    @for %%d in ("%VIRTUAL_ENV%") do @set "VIRTUAL_ENV_PROMPT=%%~nxd"
+)
 
 @if defined _OLD_VIRTUAL_PROMPT (
     @set "PROMPT=%_OLD_VIRTUAL_PROMPT%"
@@ -11,11 +16,7 @@
     )
 )
 @if not defined VIRTUAL_ENV_DISABLE_PROMPT (
-    @if "" NEQ "" (
-        @set "PROMPT=() %PROMPT%"
-    ) else (
-        @for %%d in ("%VIRTUAL_ENV%") do @set "PROMPT=(%%~nxd) %PROMPT%"
-    )
+    @set "PROMPT=(%VIRTUAL_ENV_PROMPT%) %PROMPT%"
 )
 
 @REM Don't use () to avoid problems with them in %PATH%

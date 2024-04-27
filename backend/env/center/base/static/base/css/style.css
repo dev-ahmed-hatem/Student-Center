@@ -4,8 +4,10 @@
 }
 
 :root {
-    --theme-color: #ff9635;
-    --secondary-color: #007991;
+    /*--theme-color: #ff9635;*/
+    --theme-color: #242627;
+    /*--secondary-color: #007991;*/
+    --secondary-color: #8c8c8c;
     --gray-1: #ecf0f2;
     --gray-2: #666666;
     --gray-3: #dddddd;

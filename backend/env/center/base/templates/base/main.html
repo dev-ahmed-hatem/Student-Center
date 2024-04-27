@@ -1,4 +1,4 @@
-{% load static %}
+    {% load static %}
 {% url 'home' as home %}
 {% url 'about' as about %}
 {% url 'contact' as contact %}
@@ -40,7 +40,7 @@
         <ul class="links">
             <li><a href="{% url 'home' %}" class="home {% if request.path == home %}active{% endif %}">الرئيسية</a></li>
             <li>
-                <a href="{% url 'about' %}" class="about {% if request.path == about %}active{% endif %}">عنا</a>
+                <a href="{% url 'about' %}" class="about {% if request.path == about %}active{% endif %}">من نحن</a>
             </li>
             <li>
                 <a href="{% url 'contact' %}"
@@ -125,7 +125,7 @@
     <div class="content">
         <div class="col col-1">
             <div class="logo">
-                <img src="{% static 'base/assets/images/logo-regular.png' %}" alt=""/>
+                <img src="{% static 'base/assets/images/logo_just.png' %}" alt=""/>
             </div>
             <div class="description">
                 Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -138,15 +138,15 @@
             </div>
         </div>
         <div class="col col-2">
-            <h3>Latest Lessons</h3>
-            <div><a href="">Lesson one</a></div>
-            <div><a href="">Lesson two</a></div>
-            <div><a href="">Lesson three</a></div>
-            <div><a href="">Lesson four</a></div>
-            <div><a href="">Lesson five</a></div>
+            <h3>الدروس المضافة حديثا</h3>
+            <div><a href="">الدرس الأول</a></div>
+            <div><a href="">الدرس الأول</a></div>
+            <div><a href="">الدرس الأول</a></div>
+            <div><a href="">الدرس الأول</a></div>
+            <div><a href="">الدرس الأول</a></div>
         </div>
         <div class="col col-3">
-            <h3>Contact Info</h3>
+            <h3>للتواصل</h3>
             <div class="title">العنوان:</div>
             <div class="info">New York, NY 10160</div>
             <br/>

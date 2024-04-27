@@ -52,6 +52,7 @@
     padding-right: 15px;
     position: relative;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .teachers .teacher-card .content .view:hover {

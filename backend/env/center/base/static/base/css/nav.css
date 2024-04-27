@@ -45,6 +45,7 @@ nav .content .links li a.active {
     text-decoration: underline;
     color: var(--theme-color);
     cursor: pointer;
+    font-weight: bold;
 }
 
 nav .content .user {

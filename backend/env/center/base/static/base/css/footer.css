@@ -10,6 +10,9 @@ footer .content {
 
 footer .content .col {
     font-size: var(--font-m);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 footer .content .col h3 {
@@ -28,7 +31,7 @@ footer .content .col-3 {
 }
 
 footer .content .col-1 .logo img {
-    width: 230px;
+    width: 170px;
     margin-bottom: 30px;
 }
 
@@ -144,7 +147,7 @@ footer .rights {
     footer .content .col-3 .title {
         font-size: var(--font-m);
     }
-    
+
     footer .content .col-3 .info {
         font-size: var(--font-s);
     }

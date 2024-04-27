@@ -27,6 +27,10 @@ body .join {
     width: 45%;
 }
 
+.about-section > div img {
+    width: 100%;
+}
+
 .about-section .content {
     padding: 50px 0;
 }
