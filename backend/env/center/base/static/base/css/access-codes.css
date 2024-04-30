@@ -1,0 +1,77 @@
+body .vision,
+body .join {
+    display: none;
+}
+
+body section.access-codes {
+    padding: 50px 30px;
+}
+
+body section.access-codes h1,
+body section.access-codes form .access-codes-container h4 {
+    margin-bottom: 30px;
+}
+
+body section.access-codes form header {
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+td {
+    width: 200px;
+}
+
+thead tr {
+    background: transparent !important;
+}
+
+th, td {
+    border: 1px solid #8c8c8c;
+    padding: 8px;
+}
+
+td.used {
+    color: crimson;
+}
+
+td.available {
+    color: green;
+}
+
+tr:nth-child(odd) {
+    background-color: #d2d2d2;
+}
+
+tr:nth-child(even) {
+    background-color: var(--white);
+}
+
+body section.access-codes .generate label {
+    display: block;
+}
+
+body section.access-codes .generate input[type="number"] {
+    height: 25px;
+}
+
+body section.access-codes .generate button {
+    height: 25px;
+    width: 65px;
+    outline: none;
+    background: var(--theme-color);
+    color: var(--gray-3);
+    border-radius: 8px;
+    border: 1px solid var(--theme-color);
+    cursor: not-allowed;
+}
+
+body section.access-codes .generate button:not(:disabled):hover {
+    cursor: pointer;
+    background: transparent;
+    color: var(--theme-color);
+}

@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm
-from .models import Teacher, Lesson, Appendix, ContactMessage
-from django.http import JsonResponse
+from .models import Teacher, Lesson, Appendix, ContactMessage, AccessCode
+from django.http import JsonResponse, HttpResponse
 from django.utils.timezone import localtime, timedelta
+from django.utils.crypto import get_random_string
 
 
 # Create your views here.
@@ -119,3 +120,44 @@ def recieve_contact_message(request):
         # Return error response if request method is not POST
         return JsonResponse(
             {'status': 'error', 'message': 'حدث خطأ أثناء إرسال الرسالة. الرجاء معاودة المحاولة في وقت لاحق.'})
+
+
+def access_codes(request):
+    lessons = Lesson.objects.all()
+    codes = AccessCode.objects.filter(lesson=lessons[0])
+    return render(request, "base/access-codes.html", context={"lessons": lessons, "codes": codes})
+
+
+def get_lesson_coodes(request, lessonID):
+    lesson = Lesson.objects.get(id=lessonID)
+    codes = AccessCode.objects.filter(lesson=lesson)
+    if codes:
+        htmlResponse = """
+                    <table id="access-codes-list">
+                        <thead class="header">
+                        <th>الكود</th>
+                        <th>الحالة</th>
+                        """
+        for code in codes:
+            htmlResponse += f"""
+                <tr>
+                <td>{code.code}</td>
+                <td class="{"used" if code.is_used else "available"}">{"مستخدم" if code.is_used else "متاح"}</td>
+                </tr>
+            """
+        htmlResponse += "</head>"
+    else:
+        htmlResponse = "<div>لا توجد أكواد خاصة بهذا الدرس</div>"
+    return HttpResponse(htmlResponse)
+
+
+def generate_access_codes(request, lessonID, number):
+    lesson = Lesson.objects.get(id=lessonID)
+    for _ in range(number):
+        while True:
+            access_code = get_random_string(length=10)
+            if not AccessCode.objects.filter(code=access_code):
+                AccessCode.objects.create(lesson=lesson, code=access_code)
+                break
+
+    return get_lesson_coodes(request, lessonID)

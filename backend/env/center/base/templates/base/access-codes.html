@@ -1,0 +1,141 @@
+{% extends 'base/main.html' %}
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'base/css/access-codes.css' %}"/>
+{% endblock %}
+
+{% block title %}Student Center | About{% endblock %}
+
+{% block header-background %}
+    {% static 'base/assets/images/access-codes.jpg' %}
+{% endblock %}
+
+{% block header-title %}
+    أكواد التفعيل
+{% endblock %}
+
+{% block header-content %}
+{% endblock %}
+
+{% block vision-subheading %}
+
+{% endblock %}
+
+{% block vision-heading %}
+{% endblock %}
+
+{% block vision-content %}
+{% endblock %}
+
+{% block body-content %}
+    <section class="access-codes">
+
+        <h1>عرض أكواد التفعيل</h1>
+        <form id="access-codes-form">
+            <header>
+
+                <label for="lesson-select">اختر الدرس: </label>
+                <select id="lesson-select">
+                    {% for lesson in lessons %}
+                        <option value="{{ lesson.id }}">{{ lesson.name }}</option>
+                    {% endfor %}
+                </select>
+            </header>
+
+            <div class="access-codes-container" id="access-codes-container">
+                <h4>أكواد التفعيل الخاصة بالدرس:</h4>
+                <div id="access-codes-list">
+
+                    {#                    <table>#}
+                    {#                        <thead class="header">#}
+                    {#                        <th>الكود</th>#}
+                    {#                        <th>الحالة</th>#}
+                    {#                        </thead>#}
+                    {#                        {% for code in codes %}#}
+                    {#                            <tr>#}
+                    {#                                <td>{{ code.code }}</td>#}
+                    {#                                <td class='{% if code.is_used %}#}
+                    {#                                used {% else %} available#}
+                    {#                            {% endif %}'#}
+                    {#                                >{% if code.is_used %}#}
+                    {#                                    مستخدم#}
+                    {#                                {% else %}#}
+                    {#                                    متاح#}
+                    {#                                {% endif %} </td>#}
+                    {#                            </tr>#}
+                    {#                        {% endfor %}#}
+                    {#                    </table>#}
+                </div>
+            </div>
+            <br>
+            <div class="generate">
+                <label for="num-codes">إنشاء مجموعة أكواد:</label> <br>
+                <input type="number" id="num-codes" min="1" value="1" placeholder="عدد الأكواد">
+                <button type="button" id="generate-codes-btn">إنشاء</button>
+            </div>
+        </form>
+
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('access-codes-form');
+            const lessonSelect = document.getElementById('lesson-select');
+            const accessCodesList = document.getElementById('access-codes-list');
+            const generateCodesBtn = document.getElementById('generate-codes-btn');
+
+            // Disable button and number input on form submit
+            generateCodesBtn.addEventListener('click', (event) => {
+                generateCodesBtn.disabled = true;
+                document.getElementById('num-codes').disabled = true;
+                lessonSelect.disabled = true;
+
+                // Make XMLHttpRequest to server to generate codes
+                const lessonId = lessonSelect.value;
+                const numCodes = document.getElementById('num-codes').value;
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', `/generate-lesson-codes/${lessonId}/${numCodes}`);
+                xhr.onload = () => {
+                    if (xhr.status === 200) {
+                        // Display generated codes
+                        accessCodesList.innerHTML = xhr.responseText;
+                    }
+                    generateCodesBtn.disabled = false;
+                    document.getElementById('num-codes').disabled = false;
+                    lessonSelect.disabled = false;
+                };
+                xhr.send();
+            });
+
+            function getLessonCodes() {
+                // Clear access codes list
+                lessonSelect.disabled = true;
+                accessCodesList.innerHTML = 'جاري تحميل الأكواد';
+                // Disable generate button and number input
+                generateCodesBtn.disabled = true;
+                document.getElementById('num-codes').disabled = true;
+                const lessonId = lessonSelect.value;
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', `/get-lesson-codes/${lessonId}`);
+                xhr.onload = () => {
+                    if (xhr.status === 200) {
+                        // Display generated codes
+                        accessCodesList.innerHTML = xhr.responseText;
+                    }
+                    generateCodesBtn.disabled = false;
+                    document.getElementById('num-codes').disabled = false;
+                    lessonSelect.disabled = false;
+                };
+                xhr.send();
+
+            }
+
+
+            // Update access codes when lesson select changes
+            lessonSelect.addEventListener('change', getLessonCodes);
+
+            document.body.onload = getLessonCodes;
+        });
+    </script>
+{% endblock %}

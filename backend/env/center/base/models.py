@@ -61,3 +61,12 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"{self.subject} from {self.name}"
+
+
+class AccessCode(models.Model):
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+    code = models.CharField(max_length=50, unique=True)
+    is_used = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Code for lesson {self.lesson}: {self.code}"
