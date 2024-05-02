@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin, Group
 from .models import *
 
+
 # Register your models here.
 
 class UserProfileAdmin(UserAdmin):
@@ -17,7 +18,7 @@ class UserProfileAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('phone', 'name', 'email', 'password1', 'password2'),
+            'fields': ('phone', 'name', 'email', 'password1', 'password2', 'is_staff'),
         }),
     )
     search_fields = ('phone', 'name', 'email')

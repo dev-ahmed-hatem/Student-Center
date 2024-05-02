@@ -70,6 +70,12 @@ body section.access-codes .generate button {
     cursor: not-allowed;
 }
 
+body section.access-codes .generate button#print-btn {
+    width: 200px;
+    height: 30px;
+    margin-top: 20px;
+}
+
 body section.access-codes .generate button:not(:disabled):hover {
     cursor: pointer;
     background: transparent;

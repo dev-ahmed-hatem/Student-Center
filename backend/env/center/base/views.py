@@ -132,7 +132,10 @@ def recieve_contact_message(request):
 def access_codes(request):
     lessons = Lesson.objects.all()
     codes = AccessCode.objects.filter(lesson=lessons[0])
-    return render(request, "base/access-codes.html", context={"lessons": lessons, "codes": codes})
+    available = bool(codes.filter(is_used=False))
+    print(available)
+    return render(request, "base/access-codes.html",
+                  context={"lessons": lessons, "codes": codes, "available": available})
 
 
 def get_lesson_coodes(request, lessonID):

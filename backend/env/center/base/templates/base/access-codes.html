@@ -73,6 +73,10 @@
                 <label for="num-codes">إنشاء مجموعة أكواد:</label> <br>
                 <input type="number" id="num-codes" min="1" value="1" placeholder="عدد الأكواد">
                 <button type="button" id="generate-codes-btn">إنشاء</button>
+                <br/>
+                {% if available %}
+                    <button type="button" id="print-btn">طباعة الأكواد المتاحة</button>
+                {% endif %}
             </div>
         </form>
 
@@ -84,6 +88,56 @@
             const lessonSelect = document.getElementById('lesson-select');
             const accessCodesList = document.getElementById('access-codes-list');
             const generateCodesBtn = document.getElementById('generate-codes-btn');
+            const printBtn = document.getElementById('print-btn');
+
+            printBtn.addEventListener("click", print_available)
+
+            function print_available() {
+                let html = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .code{
+            width: 170px;
+            height: 79px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Arial";
+            border: 1px solid;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+{% for code in codes %}
+    {% if not code.is_used %}
+        <div class="code">{{code.code}}</div>
+
+    {% endif %}
+{% endfor %}
+
+    </div>
+</body>
+
+</html>`,
+                    iframe = document.createElement("iframe");
+                iframe.style.display = "none";
+                document.body.appendChild(iframe);
+                iframe.contentDocument.write(html);
+                iframe.contentDocument.close();
+                iframe.contentWindow.print();
+            }
 
             // Disable button and number input on form submit
             generateCodesBtn.addEventListener('click', (event) => {
