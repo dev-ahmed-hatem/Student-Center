@@ -1,15 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractBaseUser, Group, Permission, BaseUserManager, User, PermissionsMixin
+from django.utils import timezone
 
 
 # Create your models here.
-class UserProfile(models.Model):
-    name = models.CharField(max_length=50, default="")
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.user.username
 
 
 class Teacher(models.Model):
@@ -39,6 +33,44 @@ class Lesson(models.Model):
     def __str__(self):
         return self.name
 
+
+class UserProfileManager(BaseUserManager):
+    def create_user(self, phone, password=None):
+        if not phone:
+            raise ValueError('The phone number must be set')
+        user = self.model(phone=phone)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, phone, password=None):
+        user = self.create_user(phone, password)
+        user.is_staff = True
+        user.save(using=self._db)
+        return user
+
+
+class UserProfile(AbstractBaseUser, PermissionsMixin):
+    name = models.CharField(max_length=50, default="")
+    phone = models.CharField(max_length=15, unique=True)
+    email = models.EmailField(max_length=255, blank=True)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    date_joined = models.DateTimeField(default=timezone.now)
+    lessons_registered = models.ManyToManyField(Lesson, verbose_name="Lessons Registered")
+
+    USERNAME_FIELD = 'phone'
+
+    objects = UserProfileManager()
+
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True
+
+    def __str__(self):
+        return self.phone
 
 class Appendix(models.Model):
     name = models.CharField(max_length=100, default="")

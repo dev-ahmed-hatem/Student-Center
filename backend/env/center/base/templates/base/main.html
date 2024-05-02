@@ -50,9 +50,9 @@
         <div class="user">
             {% if request.user.is_authenticated %}
                 <button class="btn my-account">
-                    <a href="" title="{{ request.user.username }}">حسابى</a>
+                    <a href="" title="{{ request.user.name }}">حسابى</a>
                 </button>
-                <a href="{% url 'logout' %}" class="logout">تسجيل خروج, {{ request.user.username }}</a>
+                <a href="{% url 'logout' %}" class="logout">تسجيل خروج</a>
             {% else %}
                 <button class="btn my-account">
                     <a href="{% url 'login' %}">ادرس الآن</a>

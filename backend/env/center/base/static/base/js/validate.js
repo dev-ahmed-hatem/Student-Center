@@ -7,7 +7,7 @@ let form = document.getElementById("register"),
     terms = document.getElementById("terms");
 
 function validatePhone(element) {
-    if (/^\d{11}$/.test(element.value)) {
+    if (/^\d{11,15}$/.test(element.value)) {
         element.classList.add("valid");
         element.classList.remove("invalid");
         messageSpan.innerHTML = "";

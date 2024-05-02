@@ -41,9 +41,9 @@
                 <input
                         type="text"
                         class="text"
-                        placeholder="اسم المستخدم (يستخدم لتسجيل الدخول)"
-                        id="username"
-                        name="username"
+                        placeholder="البريد الإلكترونى"
+                        id="email"
+                        name="email"
                         required
                 />
             </div>
@@ -52,7 +52,7 @@
                         type="number"
                         maxlength="11"
                         class="text {% if phone %}valid{% endif %}"
-                        placeholder="رقم الموبايل"
+                        placeholder="رقم الموبايل (يستخدم لتسجيل الدخول)"
                         id="phone"
                         oninput="validatePhone(this);"
                         onfocus="validatePhone(this);"

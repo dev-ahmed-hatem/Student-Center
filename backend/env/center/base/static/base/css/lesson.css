@@ -24,12 +24,66 @@ nav .content .user .btn:hover a {
     color: var(--secondary-color);
 }
 
+/* Register form styling */
+.register-lesson h2 {
+    margin-bottom: 30px;
+}
+
+.register-lesson h4 {
+    margin-bottom: 15px;
+}
+
+.register-lesson span.msg {
+    color: crimson;
+    display: inline-block;
+    margin: auto;
+    margin-bottom: 5px;
+}
+
+.register-lesson input.invalid {
+    border-color: crimson;
+}
+
+.register-lesson input,
+.register-lesson button {
+    margin-bottom: 10px;
+    border-radius: 6px;
+    outline: none;
+    height: 30px;
+    padding: 10px;
+    border: 1px solid var(--theme-color);
+}
+
+.register-lesson button {
+    height: 35px;
+    font-size: 18px;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--theme-color);
+    color: var(--white);
+    cursor: not-allowed;
+}
+
+.register-lesson button:not(:disabled):hover {
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--theme-color);
+}
+
+.register-lesson,
 .lesson-section {
     margin: 40px 60px;
     background-color: var(--white);
     padding: 60px 80px;
     display: flex;
     flex-direction: column;
+}
+
+.register-lesson {
+    max-width: 500px;
+    margin: 40px auto !important;
 }
 
 .lesson-section iframe {
@@ -81,6 +135,7 @@ nav .content .user .btn:hover a {
         color: var(--theme-color);
     }
 
+    .register-lesson,
     .lesson-section {
         margin: 30px 20px;
         padding: 30px 20px;
@@ -122,6 +177,7 @@ nav .content .user .btn:hover a {
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .register-lesson,
     .lesson-section {
         margin: 40px;
         padding: 40px;

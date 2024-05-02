@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from .forms import UserRegistrationForm
-from .models import Teacher, Lesson, Appendix, ContactMessage, AccessCode
+from .models import Teacher, Lesson, Appendix, ContactMessage, AccessCode, UserProfile
 from django.http import JsonResponse, HttpResponse
 from django.utils.timezone import localtime, timedelta
 from django.utils.crypto import get_random_string
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -37,19 +39,23 @@ def teacher(request, pk):
 @login_required
 def lesson(request, pk):
     lesson_ = Lesson.objects.get(id=pk)
-    appendices = Appendix.objects.filter(lesson=lesson_)
-    return render(request, 'base/lesson.html', context={"lesson": lesson_,
-                                                        "appendices": appendices})
+    try:
+        request.user.lessons_registered.get(id=pk)
+        appendices = Appendix.objects.filter(lesson=lesson_)
+        return render(request, 'base/lesson.html', context={"registered": True, "lesson": lesson_,
+                                                            "appendices": appendices})
+    except:
+        return render(request, 'base/lesson.html', context={"registered": False, "lesson": lesson_})
 
 
 def login_view(request):
     if request.user.is_authenticated:
         return redirect("home")
     if request.method == 'POST':
-        username = request.POST.get("username")
+        phone = request.POST.get("phone")
         password = request.POST.get("password")
         remember = request.POST.get("remember")
-        user = authenticate(username=username, password=password)
+        user = authenticate(request=request, phone=phone, password=password)
         if user is not None:
             login(request, user)
             if remember:
@@ -70,15 +76,15 @@ def signup_view(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get("username")
+            phone = form.cleaned_data.get("phone")
             password = form.cleaned_data.get("password1")
-            user = authenticate(username=username, password=password)
+            user = authenticate(phone=phone, password=password)
             if user is not None:
                 login(request, user)
                 return redirect('home')
         else:
             return render(request, 'base/sign-up.html',
-                          context={"error": f"اسم المستخدم   ( {request.POST.get('username')} )   غير متاح",
+                          context={"error": f"رقم الموبايل  ( {request.POST.get('phone')} )   مسجل بالفعل",
                                    "name": request.POST.get("name"),
                                    "phone": request.POST.get("phone")})
     return render(request, 'base/sign-up.html')
@@ -122,6 +128,7 @@ def recieve_contact_message(request):
             {'status': 'error', 'message': 'حدث خطأ أثناء إرسال الرسالة. الرجاء معاودة المحاولة في وقت لاحق.'})
 
 
+@staff_member_required
 def access_codes(request):
     lessons = Lesson.objects.all()
     codes = AccessCode.objects.filter(lesson=lessons[0])
@@ -161,3 +168,19 @@ def generate_access_codes(request, lessonID, number):
                 break
 
     return get_lesson_coodes(request, lessonID)
+
+
+def register_lesson(request, lessonID, code):
+    lesson = Lesson.objects.get(id=lessonID)
+    print(lesson)
+    print(code)
+    try:
+        access_code = AccessCode.objects.get(lesson=lesson, code=code)
+        if access_code.is_used:
+            raise Exception("access code isn't available")
+        request.user.lessons_registered.add(lesson)
+        access_code.is_used = True
+        access_code.save()
+        return JsonResponse({"status": "success"})
+    except:
+        return JsonResponse({"status": "invalid"})

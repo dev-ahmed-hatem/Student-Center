@@ -18,4 +18,5 @@ urlpatterns = [
                   path('get-lesson-codes/<int:lessonID>', views.get_lesson_coodes, name="get-codes"),
                   path('generate-lesson-codes/<int:lessonID>/<int:number>', views.generate_access_codes,
                        name="generate-codes"),
+                  path('register-lesson/<int:lessonID>/<str:code>', views.register_lesson, name="register-lesson"),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
