@@ -13,6 +13,7 @@ class UserProfileAdmin(UserAdmin):
         (None, {'fields': ('phone', 'password')}),
         ('Personal info', {'fields': ('name', "email")}),
         ('Permissions', {'fields': ('is_staff',)}),
+        ('Others', {'fields': ('lessons_registered',)}),
     )
 
     add_fieldsets = (

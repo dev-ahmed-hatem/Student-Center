@@ -24,6 +24,10 @@
 
 {% block body-content %}
     {% if registered %}
+        {% if request.user.is_staff %}
+            <a class="access-codes-link" href="{% url "access-codes" lesson.id %}">أكواد التفعيل لهذا الدرس</a>
+        {% endif %}
+
         <div class="lesson-section">
             <iframe
                     src="{{ lesson.video_embed_url }}"
@@ -109,36 +113,39 @@
             const registerBtn = document.getElementById('register-btn');
 
             // Disable button and number input on form submit
-            registerBtn.addEventListener('click', (event) => {
-                const lessonID = '{{ lesson.id }}',
-                    code = input.value;
-                if (code.trim() === "") {
-                    msg.innerHTML = "كود تفعيل غير صالح"
-                    input.classList.add("invalid")
-                    return
-                }
-                input.disabled = true
-                registerBtn.disabled = true
-                console.log(code)
-                // Make XMLHttpRequest to server to generate codes
-                const xhr = new XMLHttpRequest()
-                xhr.open('GET', `/register-lesson/${lessonID}/${code}`)
-                xhr.onload = () => {
-                    if (xhr.status === 200) {
-                        // Display generated codes
-                        let data = JSON.parse(xhr.responseText)
-                        if (data.status == "success") {
-                            location.reload();
-                        } else {
-                            msg.innerHTML = "كود تفعيل غير صالح"
-                            input.classList.add("invalid")
-                        }
+            if (registerBtn) {
+                registerBtn.addEventListener('click', (event) => {
+                    const lessonID = '{{ lesson.id }}',
+                        code = input.value;
+                    if (code.trim() === "") {
+                        msg.innerHTML = "كود تفعيل غير صالح"
+                        input.classList.add("invalid")
+                        return
                     }
-                    registerBtn.disabled = false
-                    input.disabled = false
-                }
-                xhr.send()
-            });
+                    input.disabled = true
+                    registerBtn.disabled = true
+                    console.log(code)
+                    // Make XMLHttpRequest to server to generate codes
+                    const xhr = new XMLHttpRequest()
+                    xhr.open('GET', `/register-lesson/${lessonID}/${code}`)
+                    xhr.onload = () => {
+                        if (xhr.status === 200) {
+                            // Display generated codes
+                            let data = JSON.parse(xhr.responseText)
+                            if (data.status == "success") {
+                                location.reload();
+                            } else {
+                                msg.innerHTML = "كود تفعيل غير صالح"
+                                input.classList.add("invalid")
+                            }
+                        }
+                        registerBtn.disabled = false
+                        input.disabled = false
+                    }
+                    xhr.send()
+                });
+
+            }
 
 
         });

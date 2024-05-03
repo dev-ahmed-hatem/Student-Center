@@ -24,6 +24,14 @@ nav .content .user .btn:hover a {
     color: var(--secondary-color);
 }
 
+/* Access codes link */
+a.access-codes-link {
+    color: var(--theme-color);
+    display: block;
+    text-align: center;
+    margin: 10px;
+}
+
 /* Register form styling */
 .register-lesson h2 {
     margin-bottom: 30px;

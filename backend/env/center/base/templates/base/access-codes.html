@@ -37,8 +37,10 @@
 
                 <label for="lesson-select">اختر الدرس: </label>
                 <select id="lesson-select">
-                    {% for lesson in lessons %}
-                        <option value="{{ lesson.id }}">{{ lesson.name }}</option>
+                    {% for lesson_ in lessons %}
+                        <option value="{{ lesson_.id }}" {% if lesson_ == lesson %} selected
+
+                        {% endif %} >{{ lesson_.name }}</option>
                     {% endfor %}
                 </select>
             </header>
@@ -47,25 +49,32 @@
                 <h4>أكواد التفعيل الخاصة بالدرس:</h4>
                 <div id="access-codes-list">
 
-                    {#                    <table>#}
-                    {#                        <thead class="header">#}
-                    {#                        <th>الكود</th>#}
-                    {#                        <th>الحالة</th>#}
-                    {#                        </thead>#}
-                    {#                        {% for code in codes %}#}
-                    {#                            <tr>#}
-                    {#                                <td>{{ code.code }}</td>#}
-                    {#                                <td class='{% if code.is_used %}#}
-                    {#                                used {% else %} available#}
-                    {#                            {% endif %}'#}
-                    {#                                >{% if code.is_used %}#}
-                    {#                                    مستخدم#}
-                    {#                                {% else %}#}
-                    {#                                    متاح#}
-                    {#                                {% endif %} </td>#}
-                    {#                            </tr>#}
-                    {#                        {% endfor %}#}
-                    {#                    </table>#}
+                    {% if codes %}
+                        <table>
+                            <thead class="header">
+                            <th>الكود</th>
+                            <th>الحالة</th>
+                            </thead>
+                            {% for code in codes %}
+                                <tr>
+                                    <td class="{% if not code.is_used %}
+                                print-available
+                                {% endif %} ">{{ code.code }}</td>
+                                    <td class='{% if code.is_used %}
+                                                    used {% else %} available
+                                                {% endif %}'
+                                    >{% if code.is_used %}
+                                        مستخدم
+                                    {% else %}
+                                        متاح
+                                    {% endif %} </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% else %}
+                        <div>لا توجد أكواد خاصة بهذا الدرس</div>
+                    {% endif %}
+
                 </div>
             </div>
             <br>
@@ -90,7 +99,9 @@
             const generateCodesBtn = document.getElementById('generate-codes-btn');
             const printBtn = document.getElementById('print-btn');
 
-            printBtn.addEventListener("click", print_available)
+            if (printBtn) {
+                printBtn.addEventListener("click", print_available)
+            }
 
             function print_available() {
                 let html = `<!DOCTYPE html>
@@ -119,24 +130,30 @@
 </head>
 
 <body>
-    <div class="main">
-{% for code in codes %}
-    {% if not code.is_used %}
-        <div class="code">{{code.code}}</div>
+    <div class="main" id="main">
 
-    {% endif %}
-{% endfor %}
 
     </div>
 </body>
 
 </html>`,
-                    iframe = document.createElement("iframe");
+                    iframe = document.createElement("iframe"),
+                    availableCodes = document.querySelectorAll("td.print-available");
                 iframe.style.display = "none";
                 document.body.appendChild(iframe);
                 iframe.contentDocument.write(html);
+                for (let i = 0; i < availableCodes.length; i++) {
+                    const div = document.createElement("div");
+                    div.classList.add("code")
+                    div.textContent = availableCodes[i].textContent;
+                    iframe.contentDocument.getElementById("main").appendChild(div);
+                }
+
                 iframe.contentDocument.close();
                 iframe.contentWindow.print();
+                setTimeout(() => {
+                document.body.removeChild(iframe);
+                }, 1000);
             }
 
             // Disable button and number input on form submit
@@ -153,7 +170,9 @@
                 xhr.onload = () => {
                     if (xhr.status === 200) {
                         // Display generated codes
-                        accessCodesList.innerHTML = xhr.responseText;
+                        if (JSON.parse(xhr.responseText)["status"] == "success") {
+                            location.reload()
+                        }
                     }
                     generateCodesBtn.disabled = false;
                     document.getElementById('num-codes').disabled = false;
@@ -162,34 +181,10 @@
                 xhr.send();
             });
 
-            function getLessonCodes() {
-                // Clear access codes list
-                lessonSelect.disabled = true;
-                accessCodesList.innerHTML = 'جاري تحميل الأكواد';
-                // Disable generate button and number input
-                generateCodesBtn.disabled = true;
-                document.getElementById('num-codes').disabled = true;
-                const lessonId = lessonSelect.value;
-                const xhr = new XMLHttpRequest();
-                xhr.open('GET', `/get-lesson-codes/${lessonId}`);
-                xhr.onload = () => {
-                    if (xhr.status === 200) {
-                        // Display generated codes
-                        accessCodesList.innerHTML = xhr.responseText;
-                    }
-                    generateCodesBtn.disabled = false;
-                    document.getElementById('num-codes').disabled = false;
-                    lessonSelect.disabled = false;
-                };
-                xhr.send();
-
-            }
-
-
             // Update access codes when lesson select changes
-            lessonSelect.addEventListener('change', getLessonCodes);
-
-            document.body.onload = getLessonCodes;
+            lessonSelect.addEventListener('change', function () {
+                window.location.href = `/lessons-access-codes-admin/${this.value}/`
+            });
         });
     </script>
 {% endblock %}

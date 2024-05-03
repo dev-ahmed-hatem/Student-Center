@@ -40,7 +40,8 @@ def teacher(request, pk):
 def lesson(request, pk):
     lesson_ = Lesson.objects.get(id=pk)
     try:
-        request.user.lessons_registered.get(id=pk)
+        if not lesson_.is_free and not request.user.is_staff:
+            request.user.lessons_registered.get(id=pk)
         appendices = Appendix.objects.filter(lesson=lesson_)
         return render(request, 'base/lesson.html', context={"registered": True, "lesson": lesson_,
                                                             "appendices": appendices})
@@ -129,36 +130,13 @@ def recieve_contact_message(request):
 
 
 @staff_member_required
-def access_codes(request):
+def access_codes(request, lessonID):
     lessons = Lesson.objects.all()
-    codes = AccessCode.objects.filter(lesson=lessons[0])
-    available = bool(codes.filter(is_used=False))
-    print(available)
-    return render(request, "base/access-codes.html",
-                  context={"lessons": lessons, "codes": codes, "available": available})
-
-
-def get_lesson_coodes(request, lessonID):
     lesson = Lesson.objects.get(id=lessonID)
     codes = AccessCode.objects.filter(lesson=lesson)
-    if codes:
-        htmlResponse = """
-                    <table id="access-codes-list">
-                        <thead class="header">
-                        <th>الكود</th>
-                        <th>الحالة</th>
-                        """
-        for code in codes:
-            htmlResponse += f"""
-                <tr>
-                <td>{code.code}</td>
-                <td class="{"used" if code.is_used else "available"}">{"مستخدم" if code.is_used else "متاح"}</td>
-                </tr>
-            """
-        htmlResponse += "</head>"
-    else:
-        htmlResponse = "<div>لا توجد أكواد خاصة بهذا الدرس</div>"
-    return HttpResponse(htmlResponse)
+    available = bool(codes.filter(is_used=False))
+    return render(request, "base/access-codes.html",
+                  context={"lessons": lessons, "lesson": lesson, "codes": codes, "available": available})
 
 
 def generate_access_codes(request, lessonID, number):
@@ -170,7 +148,7 @@ def generate_access_codes(request, lessonID, number):
                 AccessCode.objects.create(lesson=lesson, code=access_code)
                 break
 
-    return get_lesson_coodes(request, lessonID)
+    return JsonResponse({"status": "success"})
 
 
 def register_lesson(request, lessonID, code):
