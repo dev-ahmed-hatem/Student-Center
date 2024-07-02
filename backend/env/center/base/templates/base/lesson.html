@@ -8,6 +8,13 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{% static 'base/css/lesson.css' %}">
     <link rel="stylesheet" href="{% static 'base/css/expandable.css' %}">
+    {#    vidstack cdns   #}
+    <link rel="stylesheet" href="https://cdn.vidstack.io/player/theme.css"/>
+    <link rel="stylesheet" href="https://cdn.vidstack.io/player/video.css"/>
+    <script src="https://cdn.vidstack.io/player" type="module"></script>
+    <script src="https://cdn.vidstack.io/player.dev" type="module"></script>
+    <script src="https://cdn.vidstack.io/player@1.11.21" type="module"></script>
+
 {% endblock %}
 
 {% block nav-logo %}
@@ -29,12 +36,19 @@
         {% endif %}
 
         <div class="lesson-section">
-            <iframe
-                    src="{{ lesson.video_embed_url }}"
-                    title="{{ lesson.video_title }}"
-                    frameborder="0"
-                    allowfullscreen
-            ></iframe>
+            {#            <iframe#}
+            {#                    src="{{ lesson.video_embed_url }}"#}
+            {#                    title="{{ lesson.video_title }}"#}
+            {#                    frameborder="0"#}
+            {#                    allowfullscreen#}
+            {#            ></iframe>#}
+            <media-player title="{{ lesson.video_title }}" src="{{ lesson.video_embed_url }}">
+                <media-provider></media-provider>
+                                <media-video-layout
+{#                                        thumbnails="https://riggswealth.com/wp-content/uploads/2016/06/Riggs-Video-Placeholder-300x150.jpg"#}
+                                >
+                                </media-video-layout>
+            </media-player>
             <h2 class="video-title">{{ lesson.video_title }}</h2>
             <h1>{{ lesson.name }}</h1>
             <p class="description">
